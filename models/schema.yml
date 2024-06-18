@@ -3,10 +3,44 @@ version 2:
 sources:
   - name: raw
     schema: gz_raw_data
+    description: greenweez raw data source
     tables:
       - name: sales
         identifier: raw_gz_sales
+        freshness:
+          warn_after:
+            count: 90
+            period: day
+        loaded_at_field: "CAST( date_date as TIMESTAMP)"
+        description: sales of greenweez/ we have one row per products_id found in each orders_id
+        columns:
+          - name: date_date
+            description: date of pruchase
+          - name: orders_id
+            description: id of the purchase made
+          - name: products_id
+            description: the id of each product that is present in a purchase
+          - name: revenue
+            description: revenue made per product_id per order_id
+          - name: quantity
+            description: quantity of the product sold within that order
       - name: product
         identifier: raw_product
+        description: list of products sold at greenweez
+        columns:
+          - name: products_id
+            description: unique identifier for each product
+          - name: pruschase price
+            description: price of each product
       - name: ship
         identifier: raw_gz_ship
+        description: shipping information for orders at greenweez
+        columns:
+          - name: orders_id
+            description: primary key of table
+          - name: shipping_fee
+            description: shipping fee applied to order
+          - name: log_cost
+            description: logistics cost of order
+          - name: ship_cost
+            description: shipping cost of order
