@@ -110,3 +110,11 @@ sources:
           description:  Revenue - Purchase_cost
         - name: operational_margin
           description: margin + shipping fee - log_cost - ship_cost
+      - name: adwords
+        identifier: raw_gz_adwords
+      - name: bing
+        identifier: raw_gz_bing
+      - name: criteo
+        identifier: raw_gz_criteo
+      - name: facebook 
+        identifier: raw_gz_facebook
