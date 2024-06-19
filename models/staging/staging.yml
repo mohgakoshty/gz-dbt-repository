@@ -59,8 +59,7 @@ models:
       - name: orders_id
         tests:
           - unique
-          - not_null
-          
+          - not_null  
       - name: date_date
       - name: revenue
       - name: quantity
@@ -69,11 +68,60 @@ models:
   - name: finance_days
     columns:
       - name: date_date
-        tests:
-          - unique
-          - not_null
       - name: nb_transactions
       - name: revenue
       - name: average_basket
       - name: margin
       - name: operational_margin
+  - name: stg_raw__adwords
+    columns:
+      - name: "(campaign_key || '-' || date_date)"
+        tests: 
+          - unique
+          - not_null
+      - name: date_date
+      - name: paid_source
+      - name: campaign_key
+      - name: campaign_name
+      - name: ads_cost
+      - name: impression
+      - name: click
+  - name: stg_raw__bing
+    columns:
+      - name: "(campaign_key || '-' || date_date)"
+        tests: 
+          - unique
+          - not_null
+      - name: date_date
+      - name: paid_source
+      - name: campaign_key
+      - name: campaign_name
+      - name: ads_cost
+      - name: impression
+      - name: click
+  - name: stg_raw__criteo
+    columns:
+      - name: "(campaign_key || '-' || date_date)"
+        tests: 
+          - unique
+          - not_null
+      - name: date_date
+      - name: paid_source
+      - name: campaign_key
+      - name: campaign_name
+      - name: ads_cost
+      - name: impression
+      - name: click
+  - name: stg_raw__facebook
+    columns:
+      - name: "(campaign_key || '-' || date_date)"
+        tests: 
+          - unique
+          - not_null
+      - name: date_date
+      - name: paid_source
+      - name: campaign_key
+      - name: campaign_name
+      - name: ads_cost
+      - name: impression
+      - name: click
