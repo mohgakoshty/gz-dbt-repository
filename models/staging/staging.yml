@@ -1,0 +1,79 @@
+version: 2
+
+models:
+  - name: stg_raw__sales
+    columns:
+      - name: "(orders_id || '-' || products_id)"
+        tests: 
+          - unique
+      - name: date_date
+        description: date of pruchase
+      - name: orders_id
+      - name: products_id
+      - name: revenue
+      - name: quantity  
+  - name: stg_raw__product
+    columns:
+      - name: products_id
+        tests:
+          - unique
+          - not_null 
+      - name: pruschase price
+  - name: stg_raw__ship
+    columns:
+      - name: orders_id
+        tests:
+          - unique
+          - not_null
+      - name: shipping_fee
+      - name: log_cost
+      - name: ship_cost
+  - name: int_sales_margin
+    columns:
+      - name: "(orders_id || '-' || products_id)"
+        tests: 
+         - unique
+         - not_null
+      - name: products_id
+      - name: date_date
+      - name: orders_id
+      - name: revenue
+      - name: quantity
+      - name: purchase_price
+      - name: purchase_cost
+      - name: margin
+  - name: int_orders_operational
+    columns:
+      - name: orders_id
+        tests:
+          - unique
+          - not_null
+      - name: date_date
+      - name: revenue
+      - name: quantity
+      - name: purchase_cost
+      - name: margin
+      - name: operational_margin
+  - name: int_orders_margin
+    columns:
+      - name: orders_id
+        tests:
+          - unique
+          - not_null
+          
+      - name: date_date
+      - name: revenue
+      - name: quantity
+      - name: purchase_cost
+      - name: margin
+  - name: finance_days
+    columns:
+      - name: date_date
+        tests:
+          - unique
+          - not_null
+      - name: nb_transactions
+      - name: revenue
+      - name: average_basket
+      - name: margin
+      - name: operational_margin
